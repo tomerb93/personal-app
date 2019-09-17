@@ -1,0 +1,37 @@
+<form [formGroup]="expenseForm" (submit)="addExpense()">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="I spent "
+      formControlName="expenseAmount"
+      type="number"
+    />
+    <mat-error
+      *ngIf="
+        expenseForm.get('expenseAmount').invalid &&
+        expenseForm.get('expenseAmount').dirty
+      "
+    >
+      Please enter money spent
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="On..."
+      formControlName="expenseDescription"
+    />
+    <mat-error
+      *ngIf="
+        expenseForm.get('expenseDescription').invalid &&
+        expenseForm.get('expenseDescription').dirty
+      "
+    >
+      Please enter what was purchased
+    </mat-error>
+  </mat-form-field>
+  <button color="accent" mat-raised-button type="submit">
+    Add
+  </button>
+</form>

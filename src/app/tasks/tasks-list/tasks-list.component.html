@@ -1,0 +1,49 @@
+<mat-accordion multi="true">
+    <mat-expansion-panel *ngFor="let task of tasks">
+        <mat-expansion-panel-header>
+            <p>{{ task.title | uppercase }}</p>
+        </mat-expansion-panel-header>
+        <p>{{ task.dateCreated | date }}</p>
+        <mat-panel-description
+            *ngIf="!editMode"
+            (click)="editTask(task.id, 'description')"
+        >
+            <span class="width-100p">{{ task.description }}</span>
+        </mat-panel-description>
+        <mat-panel-description *ngIf="editMode">
+            <form class="width-100p">
+                <textarea
+                    class="width-100p"
+                    placeholder="Edit description"
+                    style="width: 100%"
+                    matInput
+                    #newDescription
+                    rows="5"
+                    >{{ task.description }}
+                    </textarea
+                >
+
+                <button
+                    mat-button
+                    color="warn"
+                    (click)="
+                        editTask(
+                            task.id,
+                            newDescription.value,
+                            'description',
+                            task.title,
+                            task.description
+                        )
+                    "
+                >
+                    Save
+                </button>
+            </form>
+        </mat-panel-description>
+        <mat-action-row>
+            <button mat-button color="warn" (click)="deleteTask(task.id)">
+                Delete
+            </button>
+        </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>

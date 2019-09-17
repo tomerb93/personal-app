@@ -1,0 +1,14 @@
+mat-form-field,
+textarea {
+    width: 100%;
+}
+
+.close-create-form-button {
+    margin-bottom: 3vh;
+    padding-right: 20vh;
+}
+
+.create-task,
+.create-task-button {
+    margin-bottom: 1vh;
+}

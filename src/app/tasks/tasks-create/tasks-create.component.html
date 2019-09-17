@@ -1,0 +1,49 @@
+<button
+    mat-raised-button
+    color="primary"
+    (click)="openCreateTaskForm()"
+    *ngIf="!toggleCreateTaskForm"
+    class="create-task-button"
+>
+    Create New Task
+</button>
+<mat-card *ngIf="toggleCreateTaskForm" class="create-task">
+    <button
+        class="close-create-form-button"
+        mat-button
+        (click)="closeCreateTaskForm()"
+    >
+        <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+    <form
+        [formGroup]="taskForm"
+        (submit)="createTask()"
+        (keypress)="enterPressed($event)"
+    >
+        <mat-form-field>
+            <input
+                matInput
+                placeholder="Task Title"
+                formControlName="title"
+                type="text"
+            />
+            <mat-error *ngIf="taskForm.get('title').invalid">
+                Please enter a task title
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea
+                matInput
+                placeholder="Task Description"
+                rows="4"
+                formControlName="description"
+            ></textarea>
+            <mat-error *ngIf="taskForm.get('description').invalid">
+                Please enter a task description
+            </mat-error>
+        </mat-form-field>
+        <button color="primary" mat-raised-button type="submit">
+            Add task
+        </button>
+    </form>
+</mat-card>
