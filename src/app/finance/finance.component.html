@@ -17,10 +17,14 @@
     </mat-select>
   </mat-form-field>
 </div>
-<mat-card style="text-align: center; margin-bottom: 1vh;">
-  <mat-card-title>
-    <span style="color: beige">Current Balance: </span> $ - 429.00.000
-  </mat-card-title>
+<mat-card style="margin-bottom: 1vh; padding: 1vh; text-align: center;">
+  <mat-card-content>
+    <p style="color:gainsboro;">Current Balance:</p>
+    <mat-card-title
+      style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
+      >{{ finances | balance: 'amount' }}</mat-card-title
+    >
+  </mat-card-content>
 </mat-card>
 <mat-card>
   <app-expense-add></app-expense-add>

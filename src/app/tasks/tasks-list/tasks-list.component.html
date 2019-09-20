@@ -1,7 +1,7 @@
 <mat-accordion multi="true">
     <mat-expansion-panel *ngFor="let task of tasks">
         <mat-expansion-panel-header>
-            <p>{{ task.title | uppercase }}</p>
+            <p>{{ task.title }}</p>
         </mat-expansion-panel-header>
         <p>{{ task.dateCreated | date }}</p>
         <mat-panel-description
@@ -11,7 +11,7 @@
             <span class="width-100p">{{ task.description }}</span>
         </mat-panel-description>
         <mat-panel-description *ngIf="editMode">
-            <form class="width-100p">
+            <form class="width-100p" (submit)="fakeFormSubmit()">
                 <textarea
                     class="width-100p"
                     placeholder="Edit description"
@@ -24,6 +24,7 @@
                 >
 
                 <button
+                    type="button"
                     mat-button
                     color="warn"
                     (click)="

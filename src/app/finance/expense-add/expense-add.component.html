@@ -1,4 +1,12 @@
-<form [formGroup]="expenseForm" (submit)="addExpense()">
+<form
+  [formGroup]="expenseForm"
+  (submit)="
+    createExpense(
+      expenseForm.value.expenseAmount,
+      expenseForm.value.expenseDescription
+    )
+  "
+>
   <mat-form-field>
     <input
       matInput

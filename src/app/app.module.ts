@@ -30,6 +30,7 @@ import { TasksCreateComponent } from './tasks/tasks-create/tasks-create.componen
 import { HttpClientModule } from '@angular/common/http';
 import { FinanceComponent } from './finance/finance.component';
 import { ExpenseAddComponent } from './finance/expense-add/expense-add.component';
+import { BalancePipe } from './finance/balance.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ExpenseAddComponent } from './finance/expense-add/expense-add.component
     TasksListComponent,
     TasksCreateComponent,
     FinanceComponent,
-    ExpenseAddComponent
+    ExpenseAddComponent,
+    BalancePipe
   ],
   imports: [
     BrowserModule,
@@ -65,4 +67,4 @@ import { ExpenseAddComponent } from './finance/expense-add/expense-add.component
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

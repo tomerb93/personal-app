@@ -1,15 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FinanceService } from '../finance.service';
 
 @Component({
-  selector: "app-expense-add",
-  templateUrl: "./expense-add.component.html",
-  styleUrls: ["./expense-add.component.css"]
+  selector: 'app-expense-add',
+  templateUrl: './expense-add.component.html',
+  styleUrls: ['./expense-add.component.css']
 })
 export class ExpenseAddComponent implements OnInit {
   expenseForm: FormGroup;
 
-  constructor() {}
+  constructor(private financeService: FinanceService) { }
 
   ngOnInit() {
     this.expenseForm = new FormGroup({
@@ -22,13 +23,13 @@ export class ExpenseAddComponent implements OnInit {
     });
   }
 
-  addExpense() {
+
+
+  createExpense(expenseAmount: number, expenseDescription: string) {
     if (this.expenseForm.invalid) {
       return;
     }
-    console.log(
-      `You spent ${this.expenseForm.value.expenseAmount} on ${this.expenseForm.value.expenseDescription}`
-    );
+    this.financeService.createExpense(expenseAmount, expenseDescription);
     this.expenseForm.reset();
   }
 }
