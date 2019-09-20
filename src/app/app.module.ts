@@ -16,7 +16,8 @@ import {
   MatExpansionModule,
   MatInputModule,
   MatGridListModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDialogModule
 } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
@@ -31,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FinanceComponent } from './finance/finance.component';
 import { ExpenseAddComponent } from './finance/expense-add/expense-add.component';
 import { BalancePipe } from './finance/balance.pipe';
+import { CreateDepositDialogComponent } from './finance/create-deposit-dialog/create-deposit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { BalancePipe } from './finance/balance.pipe';
     TasksCreateComponent,
     FinanceComponent,
     ExpenseAddComponent,
-    BalancePipe
+    BalancePipe,
+    CreateDepositDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,10 +64,12 @@ import { BalancePipe } from './finance/balance.pipe';
     MatInputModule,
     MatGridListModule,
     MatSelectModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateDepositDialogComponent]
 })
 export class AppModule { }

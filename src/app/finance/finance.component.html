@@ -2,8 +2,8 @@
   <mat-form-field>
     <mat-label>Actions</mat-label>
     <mat-select style="margin-top: 1vh;">
-      <mat-option>
-        hey
+      <mat-option (click)="openDepositDialog()">
+        Deposit
       </mat-option>
       <mat-option>
         hey
@@ -22,10 +22,20 @@
     <p style="color:gainsboro;">Current Balance:</p>
     <mat-card-title
       style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
-      >{{ finances | balance: 'amount' }}</mat-card-title
+      >{{ finances | balance: 'amount' | currency: 'ILS' }}</mat-card-title
     >
   </mat-card-content>
 </mat-card>
 <mat-card>
   <app-expense-add></app-expense-add>
+</mat-card>
+
+<!-- TODO Create angular table to store the data and also add paginator, and divide between those that are type 1 and type 2 -->
+
+<mat-card *ngFor="let finance of finances">
+  <p>
+    Amount: {{ finance.amount | currency: 'ILS' }}, Type: {{ finance.typeId }},
+    Description: {{ finance.description }}, Date:
+    {{ finance.dateCreated | date }}
+  </p>
 </mat-card>

@@ -7,7 +7,7 @@ import { Finance } from './finance.model';
 export class BalancePipe implements PipeTransform {
 
   transform(items: Finance[], attr: string) {
-    if (!items || !items.length) { return items; }
+    if (!items || !items.length) { return 0; }
     return items.reduce((a, b) => a + (b[attr] || 0), 0);
   }
 

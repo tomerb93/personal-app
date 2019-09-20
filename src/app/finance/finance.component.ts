@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FinanceService } from './finance.service';
 import { Finance } from './finance.model';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { CreateDepositDialogComponent } from './create-deposit-dialog/create-deposit-dialog.component';
 
 @Component({
   selector: 'app-finance',
@@ -14,7 +16,10 @@ export class FinanceComponent implements OnInit {
   financesSub: Subscription;
   balance: number;
 
-  constructor(private financeService: FinanceService) { }
+  constructor(
+    private financeService: FinanceService,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.financeService.getFinances();
@@ -23,4 +28,28 @@ export class FinanceComponent implements OnInit {
         this.finances = financesData.finances;
       });
   }
+
+  openDepositDialog() {
+    const depostDialogRef = this.dialog.open(
+      CreateDepositDialogComponent,
+      {
+        width: '25vh',
+        data: {
+          depositAmount: '',
+          depositDescription: ''
+        }
+      });
+
+    depostDialogRef.afterClosed()
+      .subscribe(data => {
+        if (!data.depositAmount) {
+          return;
+        }
+        if (!data.depositDescription) {
+          data.depositDescription = 'No description added';
+        }
+        this.financeService.createDeposit(data.depositDescription, data.depositAmount);
+      });
+  }
+
 }

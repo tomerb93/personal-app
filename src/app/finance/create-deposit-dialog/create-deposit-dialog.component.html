@@ -1,0 +1,24 @@
+<div mat-dialog-content>
+  <mat-form-field>
+    <input
+      placeholder="Description"
+      matInput
+      type="text"
+      [(ngModel)]="data.depositDescription"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      placeholder="Amount"
+      matInput
+      type="number"
+      [(ngModel)]="data.depositAmount"
+    />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Back</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>
+    Add deposit
+  </button>
+</div>

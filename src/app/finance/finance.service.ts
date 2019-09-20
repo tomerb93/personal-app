@@ -25,12 +25,24 @@ export class FinanceService {
     const expense = {
       expenseAmount,
       expenseDescription,
-      dateCreated: new Date()
+      dateCreated: new Date(),
+      typeId: 1
     };
-    this.http.post<{ message: string }>
-      (BACKEND_URL, expense)
-      .subscribe((message) => {
-        console.log(message);
+    this.http.post(BACKEND_URL, expense)
+      .subscribe(() => {
+        this.getFinances();
+      });
+  }
+
+  createDeposit(depositDescription: string, depositAmount: number) {
+    const deposit = {
+      depositAmount,
+      depositDescription,
+      dateCreated: new Date(),
+      typeId: 2
+    };
+    this.http.post(BACKEND_URL, deposit)
+      .subscribe(() => {
         this.getFinances();
       });
   }
