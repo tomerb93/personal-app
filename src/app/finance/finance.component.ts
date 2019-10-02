@@ -33,17 +33,17 @@ export class FinanceComponent implements OnInit {
     const depostDialogRef = this.dialog.open(
       CreateDepositDialogComponent,
       {
-        width: '25vh',
+        width: '44vh',
         data: {
-          depositAmount: '',
-          depositDescription: ''
+          depositAmount: '0',
+          depositDescription: 'hey'
         }
       });
 
     depostDialogRef.afterClosed()
       .subscribe(data => {
         if (!data.depositAmount) {
-          return;
+          console.log('wow');
         }
         if (!data.depositDescription) {
           data.depositDescription = 'No description added';

@@ -6,7 +6,7 @@
         <p>{{ task.dateCreated | date }}</p>
         <mat-panel-description
             *ngIf="!editMode"
-            (click)="editTask(task.id, 'description')"
+            (click)="editTask(task.id, null, 'description', null, null)"
         >
             <span class="width-100p">{{ task.description }}</span>
         </mat-panel-description>
